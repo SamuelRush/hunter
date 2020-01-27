@@ -1,38 +1,33 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "./App.css";
+import NavBar from "./components/NavBar";
+import Main from "./components/Main";
 
-class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      message: 'Click the button to load data!'
-    }
-  }
+const App = () => {
+  const [customer, setCustomer] = useState(""); //true is employer, false is job seeker
+  const [email, setEmail] = useState("");
 
-  fetchData = () => {
-    axios.get('/api/data') // You can simply make your requests to "/api/whatever you want"
-    .then((response) => {
-      // handle success
-      console.log(response.data) // The entire response from the Rails API
+  const customerFlipper = val => {
+    setCustomer(val);
+  };
 
-      console.log(response.data.message) // Just the message
-      this.setState({
-        message: response.data.message
-      });
-    }) 
-  }
+  const emailFlipper = val => {
+    setEmail(val);
+  };
 
-  render() {
-    return (
-      <div className="App">
-        <h1>{ this.state.message }</h1>
-        <button onClick={this.fetchData} >
-          Fetch Data
-        </button>        
-      </div>
-    );
-  }
-}
+  useEffect(() => {
+    //delete this after testing
+    customerFlipper(true);
+    emailFlipper("sam@gmail.com");
+  }, []);
+
+  return (
+    <div className="App">
+      <NavBar customerFlipper={customerFlipper} emailFlipper={emailFlipper} />
+      <Main customer={customer} email={email} />
+    </div>
+  );
+};
 
 export default App;
