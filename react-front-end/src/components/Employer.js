@@ -17,7 +17,7 @@ import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles(theme => ({
   card: {
-    maxWidth: 345
+    maxWidth: 1500
   },
   media: {
     height: 0,
@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
   },
   expand: {
     transform: "rotate(0deg)",
-    marginLeft: "auto",
+    // marginLeft: "auto",
     transition: theme.transitions.create("transform", {
       duration: theme.transitions.duration.shortest
     })

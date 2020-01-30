@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS applications
+CASCADE;
+CREATE TABLE applications
+(
+  id SERIAL PRIMARY KEY NOT NULL,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  posting_id INTEGER REFERENCES postings(id) ON DELETE CASCADE,
+  date_applied DATE NOT NULL
+);
