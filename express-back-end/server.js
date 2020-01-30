@@ -30,7 +30,7 @@ app.use(function(req, res, next) {
 });
 
 // Sample GET route
-app.get("/api/data", (req, res) =>
+app.get("/api/users", (req, res) =>
   res.json({
     message: "Seems to work!"
   })
